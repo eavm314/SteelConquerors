@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 236b8bd7eb53ae94ea733bbfd0fd2dad
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - DeckCard: {fileID: 21300000, guid: 96711c9cf23497c4ba1aae10bb83d434, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
