@@ -11,19 +11,17 @@ public class Character : MonoBehaviour
     protected int damage;
     protected double speed;
 
-    public Animator animator;
-    public Collider2D col;
+    protected Animator animator;
+    protected Collider2D collider;
 
     public void Start()
     {
         animator = GetComponent<Animator>();
-        col = GetComponent<Collider2D>();
+        collider = GetComponent<Collider2D>();
     }
 
     void Attack()
     {
-        //Debug.DrawRay(transform.position, Vector2.right, Color.red, 0.1f);
-        //print();
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 1, 1 << 6);
         if (hit.collider != null)
         {
@@ -47,7 +45,7 @@ public class Character : MonoBehaviour
 
     void Die()
     {
-        col.enabled = false;
+        collider.enabled = false;
         animator.SetBool("dead", true);
         Destroy(gameObject, 2);
     }
