@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Priest : Character
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
+        base.Start();
+        healthPoints = 50;
+        damage = 0;
+        speed = 1;
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

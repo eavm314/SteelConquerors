@@ -21,22 +21,22 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 2950129b9d1a1a74aaec36f15c17b38d, type: 3}
-    - time: 0.1
+    - time: 0.06666667
       value: {fileID: 21300000, guid: 0c5c14d99974eea44aaa5fa3494ba62f, type: 3}
-    - time: 0.2
+    - time: 0.13333334
       value: {fileID: 21300000, guid: c84dcd9f4c1947948b94b6b37740e8bb, type: 3}
-    - time: 0.3
+    - time: 0.2
       value: {fileID: 21300000, guid: b113a935e8b5ed7418f7e86d08ef6b0b, type: 3}
-    - time: 0.4
+    - time: 0.26666668
       value: {fileID: 21300000, guid: 2280d1c1a17f8564f84c2ee1634104ab, type: 3}
-    - time: 0.5
+    - time: 0.33333334
       value: {fileID: 21300000, guid: 540395d2a5c7aeb48b38c077ae6beb19, type: 3}
-    - time: 0.6
+    - time: 0.4
       value: {fileID: 21300000, guid: 2a4f6f20b963a5e4ca373db079c848af, type: 3}
-    - time: 0.7
+    - time: 0.46666667
       value: {fileID: 21300000, guid: ac1605c97c20a584f92e797340f166d3, type: 3}
     attribute: m_Sprite
-    path: 
+    path: Robot
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -47,7 +47,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 434786784
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -67,7 +67,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.71666664
+    m_StopTime: 0.48333335
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

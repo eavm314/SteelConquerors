@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Archer : Character
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
+        base.Start();
+        healthPoints = 100;
+        damage = 50;
+        speed = 1;
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

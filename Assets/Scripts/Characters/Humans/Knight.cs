@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Knight : Character
 {
-    // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         
+        healthPoints = 500;
+        damage = 20;
+        speed = 1;
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

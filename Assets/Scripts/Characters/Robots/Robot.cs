@@ -24,10 +24,10 @@ public class Robot : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("soldado!!!");
-        print(other);
+        //print("soldado!!!");
+        //print(other);
         rb.velocity = Vector3.zero;
         animator.SetBool("attack", true);
     }
@@ -36,7 +36,8 @@ public class Robot : MonoBehaviour
     {
         //Debug.DrawRay(transform.position, Vector2.right, Color.red, 0.1f);
         //print();
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 1, 1 << 7);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector2.right, 1, LayerMask.GetMask("Humans"));
+
         if (hit.collider != null)
         {
             hit.collider.GetComponent<Character>().RecieveAttack(damage);

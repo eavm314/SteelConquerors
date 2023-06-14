@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Thief : Character
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        base.Start();
+        healthPoints = 100;
+        damage = 10;
+        speed = 2;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
     }
 }
