@@ -15,4 +15,28 @@ public class Soldier : Character
 
     }
 
+    public override void Idle()
+    {
+        Collider2D robot = CheckForRobots(1);
+
+        if (robot != null)
+        {
+            animator.SetBool("attack", true);
+        }
+    }
+
+    public override void Attack()
+    {
+        Collider2D robot = CheckForRobots(1);
+
+        if (robot != null)
+        {
+            robot.GetComponent<Robot>().RecieveAttack(damage);
+        }
+        else
+        {
+            animator.SetBool("attack", false);
+        }
+    }
+
 }

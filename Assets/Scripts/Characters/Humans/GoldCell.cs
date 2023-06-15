@@ -23,9 +23,6 @@ public class GoldCell : MonoBehaviour
         if (deck.troopSelected != 0)
             return;
 
-        GameObject merchant = Instantiate(merchantPrefab);
-        merchant.transform.position = transform.position;
-
-        deck.troopSelected = -1;
+        deck.CreateTroop(transform.position);
     }
 }

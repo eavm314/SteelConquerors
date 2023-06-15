@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public abstract class Character : MonoBehaviour
@@ -19,58 +20,33 @@ public abstract class Character : MonoBehaviour
         animator = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
 
-        CheckFront(0.65f);
+        //CheckForRobots(0.65f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        CheckFront(1);
-    }
-
-    public virtual void CheckFront(float distance)
+    public Collider2D CheckForRobots(float distance)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector2.left, distance,
             LayerMask.GetMask("Robots"));
-
-        if (hit.collider != null)
-        {
-            animator.SetBool("attack", true);
-        }
+        return hit.collider;
     }
 
+    public abstract void Idle();
 
-    public void Attack()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector2.left, 
-            1, LayerMask.GetMask("Robots"));
-
-        //Debug.DrawRay(transform.position + Vector3.up * 0.75f, Vector2.left, Color.red, 0.2f);
-        //print(hit.collider);
-
-        if (hit.collider != null)
-        {
-            hit.collider.GetComponent<Robot>().RecieveAttack(damage);
-        }
-        else
-        {
-            animator.SetBool("attack", false);
-        }
-
-    }
+    public abstract void Attack();
+    
 
     public void RecieveAttack(int damage)
     {
         healthPoints -= damage;
         if (healthPoints <= 0)
         {
-            Die();
+            animator.SetBool("dead", true);
         }
     }
 
     public void Die()
     {
         coll.enabled = false;
-        animator.SetBool("dead", true);
         Destroy(gameObject, 2);
     }
 }

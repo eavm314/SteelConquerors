@@ -11,7 +11,16 @@ public class Priest : Character
         damage = 0;
         speed = 1;
 
+    }
 
+    public override void Idle()
+    {
+        print("revisando...");
+    }
+
+    public override void Attack()
+    {
+        print("atacando...");
     }
 
 
