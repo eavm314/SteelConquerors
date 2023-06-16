@@ -15,7 +15,7 @@ public class Archer : Character
 
     public override void Idle()
     {
-        Collider2D robot = CheckForRobots(100);
+        Collider2D robot = CheckForRobots(100).collider;
 
         if (robot != null)
         {
@@ -25,11 +25,11 @@ public class Archer : Character
 
     public override void Attack()
     {
-        Collider2D robot = CheckForRobots(100);
+        RaycastHit2D robotHit = CheckForRobots(100);
 
-        if (robot != null)
+        if (robotHit.collider != null)
         {
-            ThrowArrow(robot);
+            ThrowArrow(robotHit.distance);
         }
         else
         {
@@ -37,12 +37,14 @@ public class Archer : Character
         }
     }
 
-    public void ThrowArrow(Collider2D robot)
+    public void ThrowArrow(float distance)
     {
-        print("lanzando flecha a: " + robot);
+        //print("lanzando flecha a: " + robot);
         GameObject arrow = Instantiate(arrowPrefab);
-        arrow.GetComponent<Arrow>().damage = damage;
         arrow.transform.position = transform.position + Vector3.up * 0.75f;
+        Arrow a = arrow.GetComponent<Arrow>();
+        a.damage = damage;
+        a.objectiveDistance = distance;
 
     }
 }

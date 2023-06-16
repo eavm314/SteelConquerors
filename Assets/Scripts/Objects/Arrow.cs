@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,15 +6,30 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public int damage;
+    public float objectiveDistance;
 
-    private float speed = 5;
+    private float horizontalSpeed = 5;
+    private float verticalSpeed;
+
     private Rigidbody2D rb;
 
-    void Start()
+    private void Awake()
+    {
+        
+    }
+
+    private void Start()
     {
         transform.Rotate(0, 0, 90);
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = Vector3.left * speed;
+
+        CalculateVerticalSpeed();
+        rb.velocity = Vector3.left * horizontalSpeed + Vector3.up * verticalSpeed;
+    }
+
+    private void CalculateVerticalSpeed()
+    {
+        verticalSpeed = objectiveDistance/(2*horizontalSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D robot)

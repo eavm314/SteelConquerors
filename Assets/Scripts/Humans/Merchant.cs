@@ -23,7 +23,7 @@ public class Merchant : Character
 
     public override void Idle()
     {
-        Collider2D robot = CheckForRobots(1);
+        Collider2D robot = CheckForRobots(1).collider;
 
         if (robot != null)
         {
@@ -39,7 +39,7 @@ public class Merchant : Character
 
     public override void Attack()
     {
-        Collider2D robot = CheckForRobots(1);
+        Collider2D robot = CheckForRobots(1).collider;
 
         if (robot != null)
         {

@@ -23,11 +23,11 @@ public abstract class Character : MonoBehaviour
         //CheckForRobots(0.65f);
     }
 
-    public Collider2D CheckForRobots(float distance)
+    public RaycastHit2D CheckForRobots(float distance)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector2.left, distance,
             LayerMask.GetMask("Robots"));
-        return hit.collider;
+        return hit;
     }
 
     public abstract void Idle();
