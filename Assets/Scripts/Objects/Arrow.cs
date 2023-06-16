@@ -5,31 +5,32 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public int damage;
-    public float objectiveDistance;
-
+    private int damage;
     private float horizontalSpeed = 5;
     private float verticalSpeed;
+    private float maxHeight = 2;
+    private float timeToImpact;
 
     private Rigidbody2D rb;
 
-    private void Awake()
-    {
-        
-    }
-
-    private void Start()
+    public void ThrowToRobot(float objectiveDistance, int damage)
     {
         transform.Rotate(0, 0, 90);
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponentInChildren<Rigidbody2D>();
+                                         
+        this.damage = damage;
+        this.timeToImpact = objectiveDistance / horizontalSpeed;
+        this.verticalSpeed = (2 * horizontalSpeed * maxHeight) /(objectiveDistance);
 
-        CalculateVerticalSpeed();
-        rb.velocity = Vector3.left * horizontalSpeed + Vector3.up * verticalSpeed;
+        rb.gravityScale = (-(verticalSpeed*verticalSpeed) / (maxHeight))/Physics2D.gravity.y;
+
+        rb.velocity = Vector3.up * verticalSpeed;
+        Destroy(gameObject, timeToImpact);
     }
 
-    private void CalculateVerticalSpeed()
+    private void FixedUpdate()
     {
-        verticalSpeed = objectiveDistance/(2*horizontalSpeed);
+        transform.position += (Vector3.left*horizontalSpeed)/60;
     }
 
     private void OnTriggerEnter2D(Collider2D robot)
