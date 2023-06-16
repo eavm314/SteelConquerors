@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Archer : Character
 {
+    public GameObject arrowPrefab;
     void Start()
     {
         base.Start();
@@ -39,5 +40,9 @@ public class Archer : Character
     public void ThrowArrow(Collider2D robot)
     {
         print("lanzando flecha a: " + robot);
+        GameObject arrow = Instantiate(arrowPrefab);
+        arrow.GetComponent<Arrow>().damage = damage;
+        arrow.transform.position = transform.position + Vector3.up * 0.75f;
+
     }
 }

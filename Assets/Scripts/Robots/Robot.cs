@@ -24,23 +24,31 @@ public class Robot : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public Collider2D CheckForHumans(float distance)
     {
-        //print("soldado!!!");
-        //print(other);
-        rb.velocity = Vector3.zero;
-        animator.SetBool("attack", true);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector2.right, distance,
+            LayerMask.GetMask("Humans"));
+        return hit.collider;
     }
 
-    void Attack()
+    public void Run()
     {
-        //Debug.DrawRay(transform.position, Vector2.right, Color.red, 0.1f);
-        //print();
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector2.right, 1, LayerMask.GetMask("Humans"));
+        Collider2D human = CheckForHumans(1);
 
-        if (hit.collider != null)
+        if (human != null)
         {
-            hit.collider.GetComponent<Character>().RecieveAttack(damage);
+            rb.velocity = Vector3.zero;
+            animator.SetBool("attack", true);
+        }
+    }
+
+    public void Attack()
+    {
+        Collider2D human = CheckForHumans(1);
+
+        if (human != null)
+        {
+            human.GetComponent<Character>().RecieveAttack(damage);
         }
         else
         {
@@ -55,14 +63,14 @@ public class Robot : MonoBehaviour
         healthPoints -= damage;
         if (healthPoints <= 0)
         {
-            Die();
+            animator.SetBool("dead", true);
         }
     }
 
-    void Die()
+    public void Die()
     {
         col.enabled = false;
-        animator.SetBool("dead", true);
+        rb.velocity = Vector3.zero;
         Destroy(gameObject, 2);
     }
 

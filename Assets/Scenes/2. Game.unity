@@ -350,10 +350,6 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6766838037637776353, guid: b527778f426d51347b9b28011d81f608, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7544301642505338250, guid: b527778f426d51347b9b28011d81f608, type: 3}
       propertyPath: m_Name
       value: Robot
