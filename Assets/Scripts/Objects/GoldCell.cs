@@ -23,6 +23,9 @@ public class GoldCell : MonoBehaviour
         if (deck.troopSelected != 0)
             return;
 
+        if (deck.gold < merchantPrefab.GetComponent<Character>().price)
+            return;
+
         deck.CreateTroop(transform.position);
     }
 }
