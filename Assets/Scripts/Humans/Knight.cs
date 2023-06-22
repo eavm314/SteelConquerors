@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Knight : Character
 {
-    void Start()
+    protected override void Start()
     {
         base.Start();
         

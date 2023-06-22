@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Merchant : Character
 {
-    void Start()
+    protected override void Start()
     {
         base.Start();
         healthPoints = 100;

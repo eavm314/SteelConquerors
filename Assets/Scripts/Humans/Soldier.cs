@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Soldier : Character
 {
-    private void Start()
+    protected override void Start()
     {
         base.Start();
         healthPoints = 100;

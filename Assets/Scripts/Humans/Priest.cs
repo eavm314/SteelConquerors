@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Priest : Character
 {
-    void Start()
+    protected override void Start()
     {
         base.Start();
         healthPoints = 50;

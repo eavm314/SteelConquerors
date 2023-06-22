@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Thief : Character
 {
-    void Start()
+    protected override void Start()
     {
         base.Start();
         healthPoints = 100;

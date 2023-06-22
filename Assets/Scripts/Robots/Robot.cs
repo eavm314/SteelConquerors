@@ -2,25 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Robot : MonoBehaviour
+public abstract class Robot : MonoBehaviour
 {
-    int healthPoints;
-    int damage;
-    int speed;
+    protected int healthPoints;
+    protected int damage;
+    protected int speed;
 
-    Animator animator;
+    protected Animator animator;
 
-    Rigidbody2D rb;
-    Collider2D col;
-    void Start()
+    protected Rigidbody2D rb;
+    protected Collider2D col;
+    protected virtual void Start()
     {
         col = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
-        healthPoints = 200;
-        damage = 20;
-        speed = 1;
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = Vector3.right * speed;
 
     }
 

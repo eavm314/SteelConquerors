@@ -15,7 +15,7 @@ public abstract class Character : MonoBehaviour
     protected Animator animator;
     protected Collider2D coll;
 
-    public void Start()
+    protected virtual void Start()
     {
         animator = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();

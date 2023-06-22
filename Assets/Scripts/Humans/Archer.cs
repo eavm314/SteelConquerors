@@ -5,7 +5,7 @@ using UnityEngine;
 public class Archer : Character
 {
     public GameObject arrowPrefab;
-    void Start()
+    protected override void Start()
     {
         base.Start();
         healthPoints = 100;
