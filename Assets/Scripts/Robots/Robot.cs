@@ -63,7 +63,8 @@ public class Robot : MonoBehaviour
         healthPoints -= damage;
         if (healthPoints <= 0)
         {
-            animator.SetBool("dead", true);
+            //animator.SetBool("dead", true);
+            animator.SetTrigger("dead");
         }
     }
 
