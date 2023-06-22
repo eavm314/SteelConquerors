@@ -39,7 +39,6 @@ public class Archer : Character
 
     public void ThrowArrow(float distance)
     {
-        print("lanzando flecha a: " + distance);
         GameObject arrow = Instantiate(arrowPrefab);
         arrow.transform.position = transform.position + Vector3.up * 0.75f;
         arrow.GetComponent<Arrow>().ThrowToRobot(distance+2, damage);

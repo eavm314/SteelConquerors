@@ -4,14 +4,39 @@ using UnityEngine;
 
 public class MeleeRobot : Robot
 {
-    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         healthPoints = 200;
         damage = 20;
         speed = 1;
-        rb.velocity = Vector3.right * speed;
+        rb.velocity = Vector2.right * speed;
+
+    }
+    public override void Run()
+    {
+        RaycastHit2D human = CheckForHumans(1);
+
+        if (human.collider != null)
+        {
+            rb.velocity = Vector2.zero;
+            animator.SetBool("attack", true);
+        }
+    }
+
+    public override void Attack()
+    {
+        RaycastHit2D human = CheckForHumans(1);
+
+        if (human.collider != null)
+        {
+            human.collider.GetComponent<Character>().RecieveAttack(damage);
+        }
+        else
+        {
+            rb.velocity = Vector2.right * speed;
+            animator.SetBool("attack", false);
+        }
 
     }
 

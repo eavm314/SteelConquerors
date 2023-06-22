@@ -6,7 +6,7 @@ public abstract class Robot : MonoBehaviour
 {
     protected int healthPoints;
     protected int damage;
-    protected int speed;
+    protected float speed;
 
     protected Animator animator;
 
@@ -20,39 +20,18 @@ public abstract class Robot : MonoBehaviour
 
     }
 
-    public Collider2D CheckForHumans(float distance)
+    public RaycastHit2D CheckForHumans(float distance)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector2.right, distance,
             LayerMask.GetMask("Humans"));
-        return hit.collider;
+        return hit;
     }
 
-    public void Run()
-    {
-        Collider2D human = CheckForHumans(1);
+    public abstract void Run();
 
-        if (human != null)
-        {
-            rb.velocity = Vector3.zero;
-            animator.SetBool("attack", true);
-        }
-    }
 
-    public void Attack()
-    {
-        Collider2D human = CheckForHumans(1);
-
-        if (human != null)
-        {
-            human.GetComponent<Character>().RecieveAttack(damage);
-        }
-        else
-        {
-            rb.velocity = Vector3.right * speed;
-            animator.SetBool("attack", false);
-        }
-
-    }
+    public abstract void Attack();
+    
 
     public void RecieveAttack(int damage)
     {
@@ -67,8 +46,9 @@ public abstract class Robot : MonoBehaviour
     public void Die()
     {
         col.enabled = false;
-        rb.velocity = Vector3.zero;
+        rb.velocity = Vector2.zero;
         Destroy(gameObject, 2);
+        print(rb.velocity);
     }
 
 }
