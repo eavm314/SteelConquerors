@@ -48,7 +48,6 @@ public abstract class Robot : MonoBehaviour
         col.enabled = false;
         rb.velocity = Vector2.zero;
         Destroy(gameObject, 2);
-        print(rb.velocity);
     }
 
 }

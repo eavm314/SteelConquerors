@@ -31,10 +31,6 @@ public class ShooterRobot : Robot
 
         if (human.collider != null)
         {
-            ShootLaser();
-
-            animator.SetFloat("attack", human.distance);
-
             if (human.distance < 2)
             {
                 rb.velocity = Vector2.zero;
@@ -42,6 +38,11 @@ public class ShooterRobot : Robot
             {
                 rb.velocity = Vector2.right * speed;
             }
+
+            ShootLaser();
+
+            animator.SetFloat("attack", human.distance);
+
         }
         else
         {

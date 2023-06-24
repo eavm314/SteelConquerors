@@ -11,8 +11,6 @@ public class Soldier : Character
         damage = 20;
         speed = 1;
 
-        print("soldado creado, price: "+price);
-
     }
 
     public override void Idle()

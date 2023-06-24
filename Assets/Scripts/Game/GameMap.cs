@@ -9,10 +9,12 @@ public class GameMap : MonoBehaviour
     public GameObject gold;
     public GameObject cell;
 
-    private GameObject[,] cellsMatrix = new GameObject[5, 9];
+    private GameObject[,] cellsMatrix;
 
     void Start()
     {
+        cellsMatrix = new GameObject[5, 9];
+
         for (int i = 0; i < 5; i++)
         { 
             for(int j = 0; j < 9; j++)
@@ -21,7 +23,8 @@ public class GameMap : MonoBehaviour
             }
         }
 
-        Invoke("GenerateGold", 1);
+        //Invoke("GenerateGold", 1);
+        //GenerateGold();
 
     }
 

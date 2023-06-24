@@ -22,10 +22,10 @@ public class DeckManager : MonoBehaviour
         gold = 100;
 
         UpdateGold();
-        CreateCards();
+        //CreateCards();
     }
 
-    private void CreateCards()
+    public void CreateCards()
     {
         for (int i = 0; i < troopsPrefabs.Count; i++)
         {
