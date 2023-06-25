@@ -46,7 +46,7 @@ public class ShooterRobot : Robot
         }
         else
         {
-            animator.SetFloat("attack", -1);
+            animator.SetFloat("attack", 100);
             rb.velocity = Vector2.right * speed;
 
         }

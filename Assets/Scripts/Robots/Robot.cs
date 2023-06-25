@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Robot : MonoBehaviour
 {
-    protected int healthPoints;
+    public int healthPoints;
     protected int damage;
     protected float speed;
 
@@ -38,16 +38,28 @@ public abstract class Robot : MonoBehaviour
         healthPoints -= damage;
         if (healthPoints <= 0)
         {
-            //animator.SetBool("dead", true);
-            animator.SetTrigger("dead");
+            Die();
         }
     }
 
     public void Die()
     {
+        animator.SetTrigger("dead");
         col.enabled = false;
         rb.velocity = Vector2.zero;
         Destroy(gameObject, 2);
     }
 
+    public void Explode()
+    {
+        rb.velocity = Vector2.zero;
+        animator.SetTrigger("explode");
+        Destroy(gameObject, 1);
+    }
+
+    public void Win()
+    {
+        rb.velocity = Vector2.zero;
+        animator.SetTrigger("win");
+    }
 }

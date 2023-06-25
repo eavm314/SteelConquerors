@@ -24,4 +24,23 @@ public class GameManager : MonoBehaviour
         map.GenerateGold();
         robotGenerator.enabled = true;
     }
+
+    public void GameOver()
+    {
+        deck.gameObject.SetActive(false);
+        robotGenerator.enabled = false;
+
+        Robot[] robots = FindObjectsOfType<Robot>();
+        Character[] characters = FindObjectsOfType<Character>();
+
+        foreach (Character c in characters)
+        {
+            c.Die();
+        }
+
+        foreach (Robot r in robots)
+        {
+            r.Win();
+        }
+    }
 }

@@ -13,14 +13,12 @@ public abstract class Character : MonoBehaviour
     protected double speed;
 
     protected Animator animator;
-    protected Collider2D coll;
+    protected Collider2D col;
 
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
-        coll = GetComponent<Collider2D>();
-
-        //CheckForRobots(0.65f);
+        col = GetComponent<Collider2D>();
     }
 
     public RaycastHit2D CheckForRobots(float distance)
@@ -40,13 +38,14 @@ public abstract class Character : MonoBehaviour
         healthPoints -= damage;
         if (healthPoints <= 0)
         {
-            animator.SetBool("dead", true);
+            Die();
         }
     }
 
     public void Die()
     {
-        coll.enabled = false;
+        animator.SetBool("dead", true);
+        col.enabled = false;
         Destroy(gameObject, 2);
     }
 }
