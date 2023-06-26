@@ -5,15 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private DeckManager deck;
-    private GameMap map;
     private RobotGenerator robotGenerator;
+    private GoldGenerator goldGenerator;
 
-    [SerializeField] private int timeToStart;
+    private int timeToStart = 5;
     private void Start()
     {
         deck = FindObjectOfType<DeckManager>();
-        map = FindObjectOfType<GameMap>();
         robotGenerator = GetComponent<RobotGenerator>();
+        goldGenerator = GetComponent<GoldGenerator>();
 
         Invoke(nameof(StartGame), timeToStart);
     }
@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     private void StartGame()
     {
         deck.CreateCards();
-        map.GenerateGold();
         robotGenerator.enabled = true;
     }
 
@@ -43,4 +42,5 @@ public class GameManager : MonoBehaviour
             r.Win();
         }
     }
+
 }

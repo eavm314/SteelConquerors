@@ -9,8 +9,8 @@ public class RobotGenerator : MonoBehaviour
 
     [SerializeField] private List<GameObject> robotsPrefabs;
 
-    [SerializeField] private int numRobots;
-    [SerializeField] private int timeToNext;
+    private int numRobots = 10;
+    private int timeToNext = 10;
 
     private int currentTime = 0;
     private int currentRobots = 0;

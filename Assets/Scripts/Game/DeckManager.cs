@@ -9,12 +9,13 @@ public class DeckManager : MonoBehaviour
 {
     public List<GameObject> troopsPrefabs;
 
-    public GameObject PrefabCard;
+    [SerializeField] private GameObject PrefabCard;
 
     public int troopSelected;
 
     public int gold;
-    public TextMeshProUGUI goldText;
+
+    [SerializeField] private TextMeshProUGUI goldText;
 
     void Start()
     {
@@ -22,7 +23,6 @@ public class DeckManager : MonoBehaviour
         gold = 100;
 
         UpdateGold();
-        //CreateCards();
     }
 
     public void CreateCards()
@@ -50,17 +50,6 @@ public class DeckManager : MonoBehaviour
                 troopSelected = troopIndex;
             });
         }
-    }
-
-    public void CreateTroop(Vector3 initialPosition)
-    {
-        GameObject newTroop = Instantiate(troopsPrefabs[troopSelected]);
-        newTroop.transform.position = initialPosition;
-
-        gold -= troopsPrefabs[troopSelected].GetComponent<Character>().price;
-        UpdateGold();
-
-        troopSelected = -1;
     }
 
     public void UpdateGold()

@@ -23,7 +23,13 @@ public class TroopGenerator : MonoBehaviour
         if (troops[deck.troopSelected].price > deck.gold)
             return;
 
-        deck.CreateTroop(transform.position);
+        GameObject newTroop = Instantiate(troops[deck.troopSelected].gameObject);
+        newTroop.transform.position = transform.position;
 
+        deck.gold -= newTroop.GetComponent<Character>().price;
+        deck.UpdateGold();
+
+        deck.troopSelected = -1;
+        
     }
 }

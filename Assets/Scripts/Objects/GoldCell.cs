@@ -5,7 +5,9 @@ using UnityEngine;
 public class GoldCell : MonoBehaviour
 {
     private DeckManager deck;
-    public GameObject merchantPrefab;
+    [SerializeField] private GameObject merchantPrefab;
+
+    private int totalGold = 50;
 
     void Start()
     {
@@ -14,8 +16,14 @@ public class GoldCell : MonoBehaviour
 
     public void CollectGold()
     {
-        deck.gold++;
+        deck.gold+=10;
         deck.UpdateGold();
+
+        totalGold -= 10;
+        if (totalGold <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnMouseDown()
@@ -26,6 +34,12 @@ public class GoldCell : MonoBehaviour
         if (deck.gold < merchantPrefab.GetComponent<Character>().price)
             return;
 
-        deck.CreateTroop(transform.position);
+        GameObject newTroop = Instantiate(merchantPrefab);
+        newTroop.transform.position = transform.position;
+
+        deck.gold -= merchantPrefab.GetComponent<Character>().price;
+        deck.UpdateGold();
+
+        deck.troopSelected = -1;
     }
 }
