@@ -7,6 +7,8 @@ public abstract class Character : MonoBehaviour
 {
     public Sprite deckCard;
 
+    private SellTroopButton sellTroopButton;
+
     public int price;
     protected int healthPoints;
     protected int damage;
@@ -17,6 +19,7 @@ public abstract class Character : MonoBehaviour
 
     protected virtual void Start()
     {
+        sellTroopButton = FindObjectOfType<SellTroopButton>();
         animator = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
     }
@@ -47,5 +50,14 @@ public abstract class Character : MonoBehaviour
         animator.SetTrigger("dead");
         col.enabled = false;
         Destroy(gameObject, 2);
+    }
+
+    private void OnMouseDown()
+    {
+        if (sellTroopButton.toggle.isOn)
+        {
+            sellTroopButton.SellTroop(this);
+            sellTroopButton.toggle.isOn = false;
+        }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private DeckManager deck;
+    private SellTroopButton sellTroopButton;
     private RobotGenerator robotGenerator;
     private GoldGenerator goldGenerator;
 
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         deck = FindObjectOfType<DeckManager>();
+        sellTroopButton = FindObjectOfType<SellTroopButton>();
         robotGenerator = GetComponent<RobotGenerator>();
         goldGenerator = GetComponent<GoldGenerator>();
 
@@ -27,7 +29,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         deck.gameObject.SetActive(false);
+        sellTroopButton.gameObject.SetActive(false);
         robotGenerator.enabled = false;
+        goldGenerator.enabled = false;
 
         Robot[] robots = FindObjectsOfType<Robot>();
         Character[] characters = FindObjectsOfType<Character>();
