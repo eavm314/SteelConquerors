@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Castle : MonoBehaviour
 {
-    public int healthPoints;
     private GameManager gameManager;
+
+    [SerializeField] private int healthPoints;
+    [SerializeField] private TextMeshProUGUI healthText;
 
     void Start()
     {
-        healthPoints = 1000;
+        UpdateHealth();
+
         gameManager = FindObjectOfType<GameManager>();
     }
 
@@ -22,7 +26,15 @@ public class Castle : MonoBehaviour
 
         if (healthPoints <= 0)
         {
+            healthPoints = 0;
             gameManager.GameOver();
         }
+
+        UpdateHealth();
+    }
+
+    public void UpdateHealth()
+    {
+        healthText.text = healthPoints.ToString();
     }
 }

@@ -21,7 +21,13 @@ public class ShooterRobot : Robot
 
         if (human.collider != null)
         {
-            animator.SetFloat("attack", human.distance);
+            ShootLaser();
+
+            if (human.distance < 2)
+            {
+                rb.velocity = Vector2.zero;
+                animator.SetBool("stop", true);
+            }
         }
     }
 
@@ -31,24 +37,18 @@ public class ShooterRobot : Robot
 
         if (human.collider != null)
         {
-            if (human.distance < 2)
-            {
-                rb.velocity = Vector2.zero;
-            } else
-            {
-                rb.velocity = Vector2.right * speed;
-            }
-
             ShootLaser();
 
-            animator.SetFloat("attack", human.distance);
-
+            if (human.distance > 2)
+            {
+                rb.velocity = Vector2.right * speed;
+                animator.SetBool("stop", false);
+            }
         }
         else
         {
-            animator.SetFloat("attack", 100);
             rb.velocity = Vector2.right * speed;
-
+            animator.SetBool("stop", false);
         }
 
     }

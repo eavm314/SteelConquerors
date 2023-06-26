@@ -13,14 +13,19 @@ public class RobotGenerator : MonoBehaviour
     [SerializeField] private int timeToNext;
 
     private int currentTime = 0;
+    private int currentRobots = 0;
 
     private void Start()
     {
         enabled = false;
+        timeToNext *= 50;
     }
 
     private void FixedUpdate()
     {
+        if (currentRobots >= numRobots)
+            enabled = false;
+
         currentTime++;
         if (currentTime < timeToNext)
             return;
@@ -29,6 +34,7 @@ public class RobotGenerator : MonoBehaviour
         int pos = Random.Range(0, 5);
 
         Instantiate(robotsPrefabs[robot], new(posX, posY[pos]), Quaternion.identity);
+        currentRobots++;
         currentTime = 0;
     }
 }

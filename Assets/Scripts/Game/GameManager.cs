@@ -13,9 +13,9 @@ public class GameManager : MonoBehaviour
     {
         deck = FindObjectOfType<DeckManager>();
         map = FindObjectOfType<GameMap>();
-        robotGenerator = FindObjectOfType<RobotGenerator>();
+        robotGenerator = GetComponent<RobotGenerator>();
 
-        Invoke("StartGame", timeToStart);
+        Invoke(nameof(StartGame), timeToStart);
     }
 
     private void StartGame()

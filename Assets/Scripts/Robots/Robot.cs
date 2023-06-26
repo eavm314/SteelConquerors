@@ -52,14 +52,14 @@ public abstract class Robot : MonoBehaviour
 
     public void Explode()
     {
-        rb.velocity = Vector2.zero;
         animator.SetTrigger("explode");
+        rb.velocity = Vector2.zero;
         Destroy(gameObject, 1);
     }
 
     public void Win()
     {
-        rb.velocity = Vector2.zero;
         animator.SetTrigger("win");
+        rb.velocity = Vector2.zero;
     }
 }
