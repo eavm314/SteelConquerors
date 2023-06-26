@@ -30,7 +30,7 @@ public class Arrow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position += (Vector3.left*horizontalSpeed)/60;
+        transform.position += (Vector3.left*horizontalSpeed)/50;
     }
 
     private void OnTriggerEnter2D(Collider2D robot)

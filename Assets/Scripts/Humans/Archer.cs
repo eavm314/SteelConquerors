@@ -41,7 +41,7 @@ public class Archer : Character
     {
         GameObject arrow = Instantiate(arrowPrefab);
         arrow.transform.position = transform.position + Vector3.up * 0.75f;
-        arrow.GetComponent<Arrow>().ThrowToRobot(distance+2, damage);
+        arrow.GetComponent<Arrow>().ThrowToRobot(distance, damage);
 
     }
 }
