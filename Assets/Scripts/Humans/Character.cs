@@ -54,6 +54,7 @@ public abstract class Character : MonoBehaviour
 
     private void OnMouseDown()
     {
+        print(gameObject);
         if (sellTroopButton.toggle.isOn)
         {
             sellTroopButton.SellTroop(this);

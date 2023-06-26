@@ -7,54 +7,83 @@ using UnityEngine.UI;
 
 public class DeckManager : MonoBehaviour
 {
-    public List<GameObject> troopsPrefabs;
+    public List<GameObject> TroopsPrefabs;
 
     [SerializeField] private GameObject PrefabCard;
 
-    public int troopSelected;
+    private GameObject[] troopCards;
 
-    public int gold;
+    [SerializeField] private Color colorActive;
+    [SerializeField] private Color colorNoActive;
+
+    private int _troopSelected;
+    public int TroopSelected
+    {
+        get { return _troopSelected; }
+        set
+        {
+            _troopSelected = value;
+            Array.ForEach(troopCards, (tc) => tc.GetComponent<Image>().color = colorNoActive);
+
+            if (_troopSelected >= 0)
+            {
+                troopCards[TroopSelected].GetComponent<Image>().color = colorActive;
+            }
+        }
+    }
+
+
+    private int _gold;
+    public int Gold
+    {
+        get { return _gold; }
+        set
+        {
+            _gold = value;
+            goldText.text = _gold.ToString();
+        }
+    }
 
     [SerializeField] private TextMeshProUGUI goldText;
+    
 
     void Start()
     {
-        troopSelected = -1;
-        gold = 100;
-
-        UpdateGold();
+        Gold = 100;
     }
 
     public void CreateCards()
     {
-        for (int i = 0; i < troopsPrefabs.Count; i++)
+        troopCards = new GameObject[TroopsPrefabs.Count];
+
+        for (int i = 0; i < troopCards.Length; i++)
         {
 
-            GameObject troopCard = Instantiate(PrefabCard);
-            troopCard.transform.SetParent(transform);
-            troopCard.transform.position = Vector3.zero;
-            troopCard.transform.localScale = Vector3.one;
+            troopCards[i] = Instantiate(PrefabCard);
+            troopCards[i].transform.SetParent(transform);
+            troopCards[i].transform.position = Vector3.zero;
+            troopCards[i].transform.localScale = Vector3.one;
 
-            Image img = troopCard.GetComponent<Image>();
-            img.sprite = troopsPrefabs[i].GetComponent<Character>().deckCard;
+            Image img = troopCards[i].GetComponent<Image>();
+            img.sprite = TroopsPrefabs[i].GetComponent<Character>().deckCard;
 
-            TextMeshProUGUI text = troopCard.GetComponentInChildren<TextMeshProUGUI>();
-            text.text = troopsPrefabs[i].GetComponent<Character>().price.ToString();
+            TextMeshProUGUI text = troopCards[i].GetComponentInChildren<TextMeshProUGUI>();
+            text.text = TroopsPrefabs[i].GetComponent<Character>().price.ToString();
 
-            Button button = troopCard.GetComponent<Button>();
+            Button button = troopCards[i].GetComponent<Button>();
             button.onClick.RemoveAllListeners();
 
-
             int troopIndex = i;
-            button.onClick.AddListener(() => {
-                troopSelected = troopIndex;
-            });
+            button.onClick.AddListener(() => { TroopSelected = troopIndex; });
         }
+
+        TroopSelected = -1;
     }
 
-    public void UpdateGold()
+    public void NotEnoughGoldAlert()
     {
-        goldText.text = gold.ToString();
-    }
+        Animator goldAnim = GetComponentInChildren<Animator>();
+        goldAnim.SetTrigger("NotEnoughGold");
 
+    }
 }

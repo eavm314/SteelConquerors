@@ -6,8 +6,8 @@ using Random = UnityEngine.Random;
 
 public class GameMap : MonoBehaviour
 {
-    public GameObject gold;
-    public GameObject cell;
+    [SerializeField] private GameObject gold;
+    [SerializeField] private GameObject cell;
 
     private GameObject[,] cellsMatrix;
 

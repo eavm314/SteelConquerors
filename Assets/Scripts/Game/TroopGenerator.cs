@@ -12,24 +12,26 @@ public class TroopGenerator : MonoBehaviour
     void Start()
     {
         deck = FindObjectOfType<DeckManager>();
-        troops = deck.troopsPrefabs.Select( prefab => prefab.GetComponent<Character>() ).ToList();
+        troops = deck.TroopsPrefabs.Select( prefab => prefab.GetComponent<Character>() ).ToList();
     }
 
     private void OnMouseDown()
     {
-        if (deck.troopSelected == -1)
+        if (deck.TroopSelected == -1)
             return;
 
-        if (troops[deck.troopSelected].price > deck.gold)
+        if (troops[deck.TroopSelected].price > deck.Gold)
+        {
+            deck.NotEnoughGoldAlert();
             return;
+        }
 
-        GameObject newTroop = Instantiate(troops[deck.troopSelected].gameObject);
+        GameObject newTroop = Instantiate(troops[deck.TroopSelected].gameObject);
         newTroop.transform.position = transform.position;
 
-        deck.gold -= newTroop.GetComponent<Character>().price;
-        deck.UpdateGold();
+        deck.Gold -= newTroop.GetComponent<Character>().price;
 
-        deck.troopSelected = -1;
+        deck.TroopSelected = -1;
         
     }
 }

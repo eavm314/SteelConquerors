@@ -26,8 +26,7 @@ public class SellTroopButton : MonoBehaviour
 
     public void SellTroop(Character troop)
     {
-        deck.gold += troop.price / 2;
-        deck.UpdateGold();
+        deck.Gold += troop.price / 2;
 
         Destroy(troop.gameObject);
     }

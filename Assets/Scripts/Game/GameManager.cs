@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private int timeToStart = 5;
     private void Start()
     {
+        Camera.main.eventMask = LayerMask.GetMask("UI", "Humans");
+
         deck = FindObjectOfType<DeckManager>();
         sellTroopButton = FindObjectOfType<SellTroopButton>();
         robotGenerator = GetComponent<RobotGenerator>();
