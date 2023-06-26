@@ -2,25 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Knight : Character
+public class Knight : Soldier
 {
+    [SerializeField] GameObject soldierPrefab;
     protected override void Start()
     {
         base.Start();
         
         healthPoints = 500;
-        damage = 20;
+        damage = 10;
         speed = 1;
     }
 
-    public override void Idle()
+    public override void RecieveAttack(int damage)
     {
-        print("revisando...");
-    }
-
-    public override void Attack()
-    {
-        print("atacando...");
+        healthPoints -= damage;
+        if (healthPoints <= 100)
+        {
+            Instantiate(soldierPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 
 }

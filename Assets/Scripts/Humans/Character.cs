@@ -33,7 +33,7 @@ public abstract class Character : MonoBehaviour
     public abstract void Attack();
     
 
-    public void RecieveAttack(int damage)
+    public virtual void RecieveAttack(int damage)
     {
         healthPoints -= damage;
         if (healthPoints <= 0)
@@ -44,7 +44,7 @@ public abstract class Character : MonoBehaviour
 
     public void Die()
     {
-        animator.SetBool("dead", true);
+        animator.SetTrigger("dead");
         col.enabled = false;
         Destroy(gameObject, 2);
     }
