@@ -27,7 +27,7 @@ public class TroopGenerator : MonoBehaviour
         }
 
         GameObject newTroop = Instantiate(troops[deck.TroopSelected].gameObject);
-        newTroop.transform.position = transform.position;
+        newTroop.transform.position = transform.position + Vector3.back;
 
         deck.Gold -= newTroop.GetComponent<Character>().price;
 

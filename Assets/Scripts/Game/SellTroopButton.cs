@@ -17,11 +17,7 @@ public class SellTroopButton : MonoBehaviour
         background = GetComponentInChildren<Image>();
 
         toggle = GetComponent<Toggle>();
-        toggle.onValueChanged.AddListener(
-            (active) =>
-            {
-                background.color = active? colorActive: colorNoActive;
-            });
+        toggle.onValueChanged.AddListener(active => background.color = active? colorActive: colorNoActive);
     }
 
     public void SellTroop(Character troop)
