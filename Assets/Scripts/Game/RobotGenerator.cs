@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RobotGenerator : MonoBehaviour
@@ -8,33 +9,55 @@ public class RobotGenerator : MonoBehaviour
     private float posX = -12;
 
     [SerializeField] private List<GameObject> robotsPrefabs;
+    private int numRobots;
 
-    private int numRobots = 10;
     private int timeToNext = 10;
 
     private int currentTime = 0;
-    private int currentRobots = 0;
+
+    [SerializeField] private TextMeshProUGUI robotsText;
+
+    [SerializeField] private int _currentRobots;
+    public int CurrentRobots
+    {
+        get { return _currentRobots; }
+        set
+        {
+            _currentRobots = value;
+            robotsText.text = _currentRobots.ToString();
+        }
+    }
+
 
     private void Start()
     {
+        CurrentRobots = CurrentRobots;
         enabled = false;
         timeToNext *= 50;
+        numRobots = robotsPrefabs.Count;
     }
 
     private void FixedUpdate()
     {
-        if (currentRobots >= numRobots)
+        if (CurrentRobots == 0)
+        {
             enabled = false;
+            FindObjectOfType<GameManager>().CheckVictory();
+            return;
+        }
 
         currentTime++;
         if (currentTime < timeToNext)
             return;
 
-        int robot = Random.Range(0, 2);
+        int robot = Random.Range(0, numRobots);
         int pos = Random.Range(0, 5);
 
         Instantiate(robotsPrefabs[robot], new(posX, posY[pos]), Quaternion.identity);
-        currentRobots++;
+        
+        CurrentRobots --;
         currentTime = 0;
     }
+
+
 }

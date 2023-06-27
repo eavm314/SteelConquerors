@@ -52,9 +52,13 @@ public abstract class Character : MonoBehaviour
         Destroy(gameObject, 2);
     }
 
+    public void Win()
+    {
+        animator.SetTrigger("win");
+    }
+
     private void OnMouseDown()
     {
-        print(gameObject);
         if (sellTroopButton.toggle.isOn)
         {
             sellTroopButton.SellTroop(this);
