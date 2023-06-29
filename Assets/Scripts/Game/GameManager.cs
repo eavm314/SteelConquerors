@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         robotGenerator = GetComponent<RobotGenerator>();
         goldGenerator = GetComponent<GoldGenerator>();
 
-        Invoke(nameof(Counter), 1);
+        Invoke(nameof(Counter), 0.5f);
     }
 
     private void Counter()
@@ -86,11 +86,11 @@ public class GameManager : MonoBehaviour
         Array.ForEach(characters, c => c.Win());
 
         DataSingleton.Instance.Victory = true;
-        Invoke(nameof(FinishGame), 5);
+        Invoke(nameof(FinishGame), 4);
     }
 
     public void FinishGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 }

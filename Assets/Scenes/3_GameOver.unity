@@ -236,7 +236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6837942745090525842, guid: bebe1818200e847409382ea6086e3c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6837942745090525842, guid: bebe1818200e847409382ea6086e3c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -248,11 +248,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6837942745090525842, guid: bebe1818200e847409382ea6086e3c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeScene
+      value: GoMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6837942745090525842, guid: bebe1818200e847409382ea6086e3c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuManager, Assembly-CSharp
+      value: GameActions, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6837942745090525842, guid: bebe1818200e847409382ea6086e3c7f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument

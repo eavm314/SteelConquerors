@@ -238,6 +238,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckCard: {fileID: 21300000, guid: b27ebb390f8e9c742999227c3d996a4f, type: 3}
   price: 20
+  healthPoints: 200
+  damage: 20
 --- !u!61 &7986706504459047374
 BoxCollider2D:
   m_ObjectHideFlags: 0

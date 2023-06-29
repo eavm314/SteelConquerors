@@ -5,13 +5,6 @@ using UnityEngine;
 public class Archer : Character
 {
     public GameObject arrowPrefab;
-    protected override void Start()
-    {
-        base.Start();
-        healthPoints = 100;
-        damage = 50;
-        speed = 1;
-    }
 
     public override void Idle()
     {

@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class MeleeRobot : Robot
 {
-    protected override void Start()
-    {
-        base.Start();
-        healthPoints = 200;
-        damage = 20;
-        speed = 1;
-        rb.velocity = Vector2.right * speed;
-
-    }
     public override void Run()
     {
         RaycastHit2D human = CheckForHumans(1);

@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class Soldier : Character
 {
-    protected override void Start()
-    {
-        base.Start();
-        healthPoints = 100;
-        damage = 20;
-        speed = 1;
-
-    }
-
     public override void Idle()
     {
         Collider2D robot = CheckForRobots(1).collider;

@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class Robot : MonoBehaviour
 {
     public int healthPoints;
-    protected int damage;
-    protected float speed;
+    public int damage;
+    public float speed;
 
     protected Animator animator;
 
@@ -17,7 +17,7 @@ public abstract class Robot : MonoBehaviour
         col = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-
+        rb.velocity = Vector2.right * speed;
     }
 
     public RaycastHit2D CheckForHumans(float distance)

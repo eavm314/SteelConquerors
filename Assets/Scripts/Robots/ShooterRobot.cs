@@ -6,14 +6,6 @@ using UnityEngine;
 public class ShooterRobot : Robot
 {
     public GameObject bulletPrefab;
-    protected override void Start()
-    {
-        base.Start();
-        healthPoints = 200;
-        damage = 10;
-        speed = 0.5f;
-        rb.velocity = Vector2.right * speed;
-    }
 
     public override void Run()
     {

@@ -5,14 +5,6 @@ using UnityEngine;
 public class Knight : Soldier
 {
     [SerializeField] GameObject soldierPrefab;
-    protected override void Start()
-    {
-        base.Start();
-        
-        healthPoints = 500;
-        damage = 10;
-        speed = 1;
-    }
 
     public override void RecieveAttack(int damage)
     {

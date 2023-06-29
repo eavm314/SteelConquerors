@@ -5,14 +5,6 @@ using UnityEngine;
 
 public class Merchant : Character
 {
-    protected override void Start()
-    {
-        base.Start();
-        healthPoints = 100;
-        damage = 20;
-        speed = 1;
-    }
-
     public Collider2D CheckForResources(float distance)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector2.left, distance,

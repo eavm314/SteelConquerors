@@ -94,7 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96364f476806f8458ece631e165dc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 0
+  healthPoints: 200
+  damage: 20
+  speed: 1
   bulletPrefab: {fileID: 4246224063586820230, guid: d1c0cde3dd0b45f4e8d1858aba839bad, type: 3}
 --- !u!50 &2767413049523283202
 Rigidbody2D:

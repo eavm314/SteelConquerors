@@ -10,9 +10,9 @@ public abstract class Character : MonoBehaviour
     private SellTroopButton sellTroopButton;
 
     public int price;
-    protected int healthPoints;
-    protected int damage;
-    protected double speed;
+    public int healthPoints;
+    public int damage;
+    protected double speed = 1;
 
     protected Animator animator;
     protected Collider2D col;
