@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,24 +11,36 @@ public class GameManager : MonoBehaviour
     private RobotGenerator robotGenerator;
     private GoldGenerator goldGenerator;
     [SerializeField] private GameObject robotsCount;
+    [SerializeField] private GameObject castleLife;
+    [SerializeField] private GameObject counter;
 
-    private int timeToStart = 5;
     private void Start()
     {
         Camera.main.eventMask = LayerMask.GetMask("UI", "Humans");
 
         deck = FindObjectOfType<DeckManager>();
         sellTroopButton = FindObjectOfType<SellTroopButton>();
+        sellTroopButton.gameObject.SetActive(false);
         robotGenerator = GetComponent<RobotGenerator>();
         goldGenerator = GetComponent<GoldGenerator>();
 
-        Invoke(nameof(StartGame), timeToStart);
+        Invoke(nameof(Counter), 1);
+    }
+
+    private void Counter()
+    {
+        Invoke(nameof(StartGame), counter.GetComponent<Counter>().value);
+        counter.SetActive(true);
     }
 
     private void StartGame()
     {
+        Destroy(counter);
+
+        deck.gameObject.SetActive(true);
         robotsCount.SetActive(true);
-        deck.CreateCards();
+        castleLife.SetActive(true);
+        sellTroopButton.gameObject.SetActive(true);
         robotGenerator.enabled = true;
     }
 
@@ -45,6 +58,8 @@ public class GameManager : MonoBehaviour
         Array.ForEach(robots, r => r.Win());
         Array.ForEach(characters, c => c.Die());
 
+        DataSingleton.Instance.Victory = false;
+        Invoke(nameof(FinishGame), 5);
     }
 
     public void CheckVictory()
@@ -69,6 +84,13 @@ public class GameManager : MonoBehaviour
 
         Character[] characters = FindObjectsOfType<Character>();
         Array.ForEach(characters, c => c.Win());
+
+        DataSingleton.Instance.Victory = true;
+        Invoke(nameof(FinishGame), 5);
     }
 
+    public void FinishGame()
+    {
+        SceneManager.LoadScene(2);
+    }
 }

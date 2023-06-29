@@ -9,10 +9,12 @@ public class GameMap : MonoBehaviour
     [SerializeField] private GameObject gold;
     [SerializeField] private GameObject cell;
 
+    private DeckManager deck;
     private GameObject[,] cellsMatrix;
 
     void Start()
     {
+        deck = FindObjectOfType<DeckManager>();
         cellsMatrix = new GameObject[5, 9];
 
         for (int i = 0; i < 5; i++)
@@ -22,7 +24,7 @@ public class GameMap : MonoBehaviour
                 cellsMatrix[i, j] = Instantiate(cell, transform);
             }
         }
-
+        deck.gameObject.SetActive(false);
     }
 
     public void GenerateGold()

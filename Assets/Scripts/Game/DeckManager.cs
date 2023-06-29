@@ -45,11 +45,13 @@ public class DeckManager : MonoBehaviour
     }
 
     [SerializeField] private TextMeshProUGUI goldText;
-    
+
 
     void Start()
     {
+        
         Gold = 100;
+        CreateCards();
     }
 
     public void CreateCards()

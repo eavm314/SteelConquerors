@@ -9,7 +9,7 @@ public class TroopGenerator : MonoBehaviour
 
     private List<Character> troops;
 
-    void Start()
+    void Awake()
     {
         deck = FindObjectOfType<DeckManager>();
         troops = deck.TroopsPrefabs.Select( prefab => prefab.GetComponent<Character>() ).ToList();
