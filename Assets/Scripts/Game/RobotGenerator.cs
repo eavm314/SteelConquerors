@@ -11,7 +11,7 @@ public class RobotGenerator : MonoBehaviour
     [SerializeField] private List<GameObject> robotsPrefabs;
     private int numRobots;
 
-    private int timeToNext = 10;
+    private int timeToNext;
 
     private int currentTime = 0;
 
@@ -31,7 +31,8 @@ public class RobotGenerator : MonoBehaviour
 
     private void Start()
     {
-        CurrentRobots = CurrentRobots;
+        CurrentRobots = DataSingleton.Instance.LevelData.RobotsAmount;
+        timeToNext = DataSingleton.Instance.LevelData.RobotsTime;
         enabled = false;
         timeToNext *= 50;
         numRobots = robotsPrefabs.Count;

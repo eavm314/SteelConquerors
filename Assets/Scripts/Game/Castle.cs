@@ -12,8 +12,9 @@ public class Castle : MonoBehaviour
 
     void Start()
     {
-        UpdateHealth();
+        healthPoints = DataSingleton.Instance.LevelData.CastleLife;
 
+        UpdateHealth();
         gameManager = FindObjectOfType<GameManager>();
     }
 
